@@ -1,0 +1,16 @@
+{
+  "name": "mongo-db-excercise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yana Slavcheva",
+  "license": "MIT",
+  "dependencies": {
+    "mongodb": "2.2.10",
+    "standart": "6.0.0",
+    "typings": "1.4.0"
+  }
+}
