@@ -1,23 +1,23 @@
-// lets require/import the mongodb native drivers.
-var mongodb = require('mongodb')
+let mongoose = require('mongoose')
 
-// We need to work with "MongoClient" interface in order to connect to a mongodb server.
-var MongoClient = mongodb.MongoClient
+mongoose.Promise = global.Promise
 
-// Connection URL. This is where your mongodb server is running.
-var url = 'mongodb://localhost:27017/my_database_name'
+let Cat = mongoose.model('Cat', {
+  name: String,
+  age: Number
+})
 
-// Use connect method to connect to the Server
-MongoClient.connect(url, function (err, db) {
-  if (err) {
-    console.log('Unable to connect to the mongoDB server. Error:', err)
-  } else {
-    // HURRAY!! We are connected. :)
-    console.log('Connection established to', url)
+let connection = 'mongodb://localhost:27017/mongoosedb'
 
-    // do some work here with the database.
+mongoose
+.connect(connection)
+.then(() => {
+  console.log('MongoDB up and running!')
 
-    // Close connection
-    db.close()
-  }
+  new Cat({
+    name: 'Pesho',
+    age: 12
+  })
+  .save()
+  .catch(console.log)
 })
