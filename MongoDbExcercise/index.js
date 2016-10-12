@@ -1,31 +1,11 @@
-let mongoose = require('mongoose')
-
-mongoose.Promise = global.Promise
-
-let Tag = require('./models/tag')
+// let Tag = require('./models/tag')
 let Image = require('./models/image')
 
-let connection = 'mongodb://localhost:27017/imagestagsdb'
+let instanodeDb = require('./instanode-db')
 
-mongoose
-.connect(connection)
-.then(() => {
-  console.log('Connected to Mongoose')
-
-  new Tag({
-    name: 'happy',
-    images: [
-      new Image({
-        url: 'http://cdn.pet360.com/pet360/Content/Images/CMS/Articles/Happy_Cat_Smiling.jpg',
-        description: 'small fluffy kitten'
-      })
-    ]
-  })
-  .save()
-  .catch(console.log)
-
-  Tag
-    .find({})
-    .exec()
-    .then(tags => console.log(tags))
+let newImage = new Image({
+  url: 'google.com',
+  description: 'google-cat'
 })
+
+instanodeDb.saveImage(newImage)
