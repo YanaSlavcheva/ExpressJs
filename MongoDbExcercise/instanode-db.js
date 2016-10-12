@@ -5,18 +5,7 @@ mongoose.Promise = global.Promise
 
 let connection = 'mongodb://localhost:27017/imagestagsdb'
 
-function saveImage(image) {
-  // let allTags = []
-
-  // for (var tag in image.Tags) {
-  //   let currentTag = new Tag({
-  //     name: tag,
-  //     images: image
-  //   })
-
-  //   allTags.push(currentTag)
-  // }
-
+function saveImage (image) {
   mongoose
     .connect(connection)
     .then(() => {
@@ -28,6 +17,8 @@ function saveImage(image) {
         .catch(console.log)
 
       for (let i = 0; i < image.tags.length; i++) {
+        // TODO: check if such tag exists... maybe...
+
         new Tag({
           name: image.tags[i],
           images: image
