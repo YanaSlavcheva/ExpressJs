@@ -3,10 +3,12 @@ mongoose.Promise = global.Promise
 
 let Image = require('./image')
 
-let Tag = mongoose.model('Tag', {
+let tagSchema = new mongoose.Schema({
   name: {type: String},
   creationDate: {type: Date, default: Date.now},
   images: [Image.schema]
 })
+
+let Tag = mongoose.model('Tag', tagSchema)
 
 module.exports = Tag

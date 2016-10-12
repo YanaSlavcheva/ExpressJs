@@ -1,9 +1,6 @@
 let mongoose = require('mongoose')
 mongoose.Promise = global.Promise
 
-let Tag = require('./models/tag')
-let Image = require('./models/image')
-
 let connection = 'mongodb://localhost:27017/imagestagsdb'
 
 function saveImage (image) {
