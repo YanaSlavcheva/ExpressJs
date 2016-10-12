@@ -2,17 +2,8 @@ let mongoose = require('mongoose')
 
 mongoose.Promise = global.Promise
 
-let Image = mongoose.model('Image', {
-  url: {type: String},
-  creationDate: {type: Date, default: Date.now},
-  description: {type: String}
-})
-
-let Tag = mongoose.model('Tag', {
-  name: {type: String},
-  creationDate: {type: Date, default: Date.now},
-  images: [Image.schema]
-})
+let Tag = require('./models/tag')
+let Image = require('./models/image')
 
 let connection = 'mongodb://localhost:27017/imagestagsdb'
 
