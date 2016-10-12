@@ -4,7 +4,8 @@ mongoose.Promise = global.Promise
 var imageSchema = new mongoose.Schema({
   url: {type: String},
   creationDate: {type: Date, default: Date.now},
-  description: {type: String}
+  description: {type: String},
+  tags: {type: [String]}
 })
 
 let Image = mongoose.model('Image', imageSchema)
