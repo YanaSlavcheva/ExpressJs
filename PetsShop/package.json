@@ -1,0 +1,15 @@
+{
+  "name": "pets-shop",
+  "version": "1.0.0",
+  "description": "online shop for pets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yana Slavcheva",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.14.0",
+    "mongoose": "4.6.5"
+  }
+}
