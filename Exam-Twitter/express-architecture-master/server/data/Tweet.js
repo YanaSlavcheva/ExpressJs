@@ -8,7 +8,7 @@ let tweetSchema = mongoose.Schema({
 })
 
 tweetSchema.path('message').validate(function(value){
-    return value.length > 140
+    return value.length < 140
 }), 'Tweet too long'
 
 let Tweet = mongoose.model('Tweet', tweetSchema)
@@ -22,3 +22,5 @@ module.exports.seedTweets = () => {
         }
     })
 }
+
+module.exports.All = Tweet

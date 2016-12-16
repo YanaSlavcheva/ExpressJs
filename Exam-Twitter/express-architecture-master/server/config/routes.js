@@ -13,6 +13,8 @@ module.exports = (app) => {
 
   app.get('/articles/create', auth.isInRole('Admin'), controllers.articles.create)
 
+  app.get('/tweets', controllers.tweets.index)
+
   app.all('*', (req, res) => {
     res.status(404)
     res.send('Not Found')
