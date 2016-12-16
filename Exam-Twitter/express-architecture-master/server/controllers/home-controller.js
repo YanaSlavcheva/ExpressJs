@@ -1,6 +1,10 @@
+let Tweet = require('mongoose').model('Tweet')
+
 module.exports = {
   index: (req, res) => {
-    res.render('home/index', {tweets: [1,2,3,4,5]})
+    Tweet.find({}, function(err, tweets){
+      res.render('home/index', {tweets: tweets})
+    })
   },
   about: (req, res) => {
     res.render('home/about')
