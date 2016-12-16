@@ -16,9 +16,17 @@ let Tweet = mongoose.model('Tweet', tweetSchema)
 module.exports.seedTweets = () => {
     Tweet.find({}).then(tweets => {
         if (tweets.length === 0) {
-            Tweet.create({
+            Tweet.create(
+            {
                 message: 'Tweet me baby one more time'
-            })
+            },
+            {
+                message: 'Tweet me baby one more time 2'
+            },
+            {
+                message: 'Tweet me baby one more time 3'
+            }
+            )
         }
     })
 }
