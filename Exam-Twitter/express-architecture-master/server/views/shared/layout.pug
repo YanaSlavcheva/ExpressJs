@@ -10,17 +10,18 @@ html
           a(href="/") Home
         li
           a(href="/about") About
-        li.delimiter
+        li
+          a(href="/tweet") Tweet
         if (currentUser)
-          li
+          li.delimiter
             span= currentUser.username
-          li
+          li.delimiter
             form#logout-form(method="post" action="/users/logout")
               a(href="javascript:document.getElementById('logout-form').submit()") Logout
         else 
-          li
+          li.delimiter
             a(href="/users/register") Register
-          li
+          li.delimiter
             a(href="/users/login") Log In
       if (globalError)
         h3= globalError
