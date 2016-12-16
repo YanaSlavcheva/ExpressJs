@@ -15,6 +15,7 @@ module.exports = (app) => {
   app.post('/tweets/create', auth.isAuthenticated, controllers.tweets.create)
 
   app.get('/tag/:tagName', controllers.tags.index)
+  app.get('/profile/:username', controllers.users.profile)
 
   app.all('*', (req, res) => {
     res.status(404)

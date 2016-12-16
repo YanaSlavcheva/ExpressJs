@@ -1,5 +1,6 @@
 let encryption = require('../utilities/encryption')
 let User = require('mongoose').model('User')
+let Tweet = require('mongoose').model('Tweet')
 
 module.exports = {
   register: (req, res) => {
@@ -55,5 +56,16 @@ module.exports = {
   logout: (req, res) => {
     req.logout()
     res.redirect('/')
+  },
+  profile: (req, res) => {
+    let username = req.params.username
+    Tweet.find({}, function(err, tweets){
+      let result = tweets.filter(function(tweet) {
+        return tweet._doc.username === username
+      })
+      tweetsToDisplay = result.slice(0, 100)
+
+      res.render('users/profile', {tweets: tweetsToDisplay, username: username})
+    })
   }
 }
