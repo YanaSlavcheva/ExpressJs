@@ -11,10 +11,10 @@ module.exports = (app) => {
   app.post('/users/authenticate', controllers.users.authenticate)
   app.post('/users/logout', controllers.users.logout)
 
-  app.get('/articles/create', auth.isInRole('Admin'), controllers.articles.create)
-
   app.get('/tweet', auth.isAuthenticated, controllers.tweets.tweet)
   app.post('/tweets/create', auth.isAuthenticated, controllers.tweets.create)
+
+  app.get('/tag/:tagName', controllers.tags.index)
 
   app.all('*', (req, res) => {
     res.status(404)
