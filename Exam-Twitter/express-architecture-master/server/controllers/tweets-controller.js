@@ -11,6 +11,7 @@ module.exports = {
       tweet.globalError = 'Tweet is too long!'
       res.render('tweet', tweet)
     } else {
+      tweet.username = req.user._doc.username
       Tweet
         .create(tweet)
         .then(tweet => {

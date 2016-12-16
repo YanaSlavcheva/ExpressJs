@@ -4,6 +4,7 @@ let requiredValidationMessage = '{PATH} is required'
 
 let tweetSchema = mongoose.Schema({
     message: {type: String, requiredValidationMessage},
+    username: {type: String},
     createdOn: {type: Date, default: Date.now}
 })
 
@@ -18,12 +19,15 @@ module.exports.seedTweets = () => {
         if (tweets.length === 0) {
             Tweet.create(
             {
-                message: 'Tweet me baby one more time'
+                username: 'Admin',
+                message: 'Tweet me baby one more time 1'
             },
             {
+                username: 'Admin',
                 message: 'Tweet me baby one more time 2'
             },
             {
+                username: 'Admin',
                 message: 'Tweet me baby one more time 3'
             }
             )
