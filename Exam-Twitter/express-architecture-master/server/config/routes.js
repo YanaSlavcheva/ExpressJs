@@ -13,7 +13,8 @@ module.exports = (app) => {
 
   app.get('/articles/create', auth.isInRole('Admin'), controllers.articles.create)
 
-  app.get('/tweets', controllers.tweets.index)
+  app.get('/tweet', auth.isAuthenticated, controllers.tweets.tweet)
+  app.post('/tweets/create', auth.isAuthenticated, controllers.tweets.create)
 
   app.all('*', (req, res) => {
     res.status(404)

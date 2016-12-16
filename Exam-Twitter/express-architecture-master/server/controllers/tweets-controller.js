@@ -1,9 +1,21 @@
 let Tweet = require('mongoose').model('Tweet')
 
 module.exports = {
-  index: (req, res) => {
-    Tweet.find({}, function(err, tweets) {
-        res.render('tweets/index', {tweets: tweets})
-    })
+  tweet: (req, res) => {
+    res.render('tweets/create')
+  },
+  create: (req, res) => {
+    let tweet = req.body
+
+    if (tweet.message.length > 140) {
+      tweet.globalError = 'Tweet is too long!'
+      res.render('tweet', tweet)
+    } else {
+      Tweet
+        .create(tweet)
+        .then(tweet => {
+          res.redirect('/')
+        })
+    }
   }
 }
