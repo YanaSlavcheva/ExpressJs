@@ -26,10 +26,7 @@ module.exports = {
 
       tweetsToDisplay = tweetsThatContainTag.slice(0, 100)
 
-      res.render('home/index', {tweets: tweetsToDisplay})
+      res.render('home/index', {tweets: tweetsToDisplay, tagName: wantedTag})
     })
-  },
-  about: (req, res) => {
-    res.render('home/about')
   }
 }
