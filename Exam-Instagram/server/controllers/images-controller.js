@@ -41,12 +41,10 @@ module.exports = {
       })
   },
   edit: (req, res) => {
-    // get image by id
-    // render form with loaded image data
+    // TODO: add validation if no object is sent here
     let imageId = req.body.id
-    let image = Image.findOne({"_id": new mongodb.ObjectId(imageId)}, function(err, doc) {
-       console.log(doc)
-
+    let image = Image.findOne({"_id": new mongodb.ObjectId(imageId)}, function(err, doc){
+      console.log(doc)
       res.render('images/edit', {image: doc})
     });
   },
