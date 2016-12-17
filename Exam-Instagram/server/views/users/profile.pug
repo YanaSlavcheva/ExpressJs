@@ -1,0 +1,7 @@
+extends ../shared/layout
+block main-content
+  h1 Hello from Express!
+  h2= username
+  ul
+    each val in tweets
+      li= val.message
