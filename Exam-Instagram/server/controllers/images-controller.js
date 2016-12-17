@@ -39,5 +39,19 @@ module.exports = {
       .then(image => {
         res.redirect('/')
       })
+  },
+  edit: (req, res) => {
+    // get image by id
+    // render form with loaded image data
+    let imageId = req.params.imageId
+    let image = Image.findOne({"_id": new mongodb.ObjectId(imageId)}, function(err, doc) {
+       callback(doc);
+    });
+
+    res.render('images/edit', {image: image})
+  },
+  update: (req, res) => {
+    console.log('In update method')
+    // parse data
   }
 }

@@ -12,3 +12,6 @@ block main-content
             form(method="post" action="/images/delete")
               input(type="hidden" name="id" value= val._id)
               input(type="submit" value="Delete")
+            form(method="get" action="/images/edit/" + val._id)
+              //- input(type="hidden" name="id" value= val._id)
+              input(type="submit" value="Edit")

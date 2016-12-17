@@ -1,0 +1,13 @@
+extends ../shared/layout
+block main-content
+  h1 Edit image
+  form(method="post" action="/images/update")
+    label(for="url") Url
+    br
+    input(type="text" name="url" id="url" value=image.url)
+    br
+    label(for="description") Description
+    br
+    input(type="text" name="description" id="description" value=image.description)
+
+    input(type="submit" value="Update")
