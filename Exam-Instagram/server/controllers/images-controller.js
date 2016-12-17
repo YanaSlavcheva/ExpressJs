@@ -10,10 +10,10 @@ module.exports = {
 
     if (image.url.length > 500) {
       image.globalError = 'Images\'s url is too long!'
-      res.render('image', image)
+      res.render('images/create', image)
     } else if (image.description.length > 500) {
       image.globalError = 'Images\'s description is too long!'
-      res.render('image', image)
+      res.render('images/create', image)
     } else {
       image.username = req.user._doc.username
       image.views = 0
