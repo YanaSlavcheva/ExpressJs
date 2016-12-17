@@ -4,7 +4,7 @@ const encryption = require('../utilities/encryption')
 let requiredValidationMessage = '{PATH} is required'
 
 let userSchema = mongoose.Schema({
-  username: { type: String, required: requiredValidationMessage, unique: true },
+  username: { type: String, required: requiredValidationMessage, unique: true, lowercase: true },
   firstName: { type: String, required: requiredValidationMessage },
   lastName: { type: String, required: requiredValidationMessage },
   salt: String,

@@ -8,27 +8,35 @@ module.exports = {
   },
   create: (req, res) => {
     let user = req.body
+    User.findOne({username: user.username.toLowerCase()}, function(err, userInDB) {
+      if (err) {
+        console.log(err)
+      } else if (userInDB) {
+        user.globalError = 'Username taken!'
+        res.render('users/register', user)
+      } else {
+        if (user.password !== user.confirmPassword) {
+          user.globalError = 'Passwords do not match!'
+          res.render('users/register', user)
+        } else {
+          user.salt = encryption.generateSalt()
+          user.hashedPass = encryption.generateHashedPassword(user.salt, user.password)
 
-    if (user.password !== user.confirmPassword) {
-      user.globalError = 'Passwords do not match!'
-      res.render('users/register', user)
-    } else {
-      user.salt = encryption.generateSalt()
-      user.hashedPass = encryption.generateHashedPassword(user.salt, user.password)
+          User
+            .create(user)
+            .then(user => {
+              req.logIn(user, (err, user) => {
+                if (err) {
+                  res.render('users/register', { globalError: 'Ooops 500' })
+                  return
+                }
 
-      User
-        .create(user)
-        .then(user => {
-          req.logIn(user, (err, user) => {
-            if (err) {
-              res.render('users/register', { globalError: 'Ooops 500' })
-              return
-            }
-
-            res.redirect('/')
-          })
-        })
-    }
+                res.redirect('/')
+              })
+            })
+        }
+      }
+    })
   },
   login: (req, res) => {
     res.render('users/login')

@@ -38,6 +38,6 @@ module.exports = {
         console.log('User not found!')
         res.redirect('/')
       }
-    });
+    })
   }
 }
