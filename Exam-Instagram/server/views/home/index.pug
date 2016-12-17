@@ -7,6 +7,8 @@ block main-content
         h2= val.description
         img(src= val.url)
 
-        form(method="post" action="/images/delete")
-          input(type="hidden" name="id" value= val._id)
-          input(type="submit" value="Delete")
+        if (currentUser)
+          if (currentUser.roles.indexOf('Admin') > -1)
+            form(method="post" action="/images/delete")
+              input(type="hidden" name="id" value= val._id)
+              input(type="submit" value="Delete")
