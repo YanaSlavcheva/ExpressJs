@@ -28,8 +28,8 @@ module.exports = {
     let imageToDeleteId = req.body.id
     Image
       .remove(
-        {_id: new mongodb.ObjectID(imageToDeleteId)}, 
-        function (err, result){ 
+        { _id: new mongodb.ObjectID(imageToDeleteId) }, 
+        function (err, result) { 
           if (err) {
             console.log(err)
           }
@@ -44,9 +44,9 @@ module.exports = {
   edit: (req, res) => {
     // TODO: add validation if no object is sent here
     let imageId = req.body.id
-    Image.findOne({"_id": new mongodb.ObjectId(imageId)}, function(err, image) {
+    Image.findOne({ "_id": new mongodb.ObjectId(imageId) }, function(err, image) {
       console.log('Image to delete: ' + image)
-      res.render('images/edit', {image: image})
+      res.render('images/edit', { image: image })
     });
   },
   update: (req, res) => {

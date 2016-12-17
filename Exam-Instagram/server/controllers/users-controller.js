@@ -8,7 +8,7 @@ module.exports = {
   },
   create: (req, res) => {
     let user = req.body
-    User.findOne({username: user.username.toLowerCase()}, function(err, userInDB) {
+    User.findOne({ username: user.username.toLowerCase() }, function(err, userInDB) {
       if (err) {
         console.log(err)
       } else if (userInDB) {
@@ -67,7 +67,7 @@ module.exports = {
   },
   profile: (req, res) => {
     let username = req.params.username
-    Image.find({}, function(err, images){
+    Image.find({}, function(err, images) {
       let usersImages = images.filter(function(image) {
         return image._doc.username === username
       })
@@ -103,7 +103,7 @@ module.exports = {
         })
       })
 
-      res.render('users/profile', {images: imagesToDisplay, username: username})
+      res.render('users/profile', { images: imagesToDisplay, username: username })
     })
   }
 }

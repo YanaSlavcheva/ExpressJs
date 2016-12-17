@@ -3,7 +3,7 @@ let mongodb = require('mongodb');
 
 module.exports = {
   all: (req, res) => {
-    User.find({}, function(err, users){
+    User.find({}, function(err, users) {
       let admins = users.filter(function(user) {
         return user._doc.roles.indexOf('Admin') > -1
       })
@@ -11,16 +11,16 @@ module.exports = {
       res.render('admins/all', {admins: admins})
     })
   }, add: (req, res) => {
-    User.find({}, function(err, users){
+    User.find({}, function(err, users) {
       let usersNotAdmins = users.filter(function(user) {
         return user._doc.roles.indexOf('Admin') === -1
       })
       
-      res.render('admins/add', {users: usersNotAdmins})
+      res.render('admins/add', { users: usersNotAdmins })
     })
   }, update: (req, res) => {
     let userToMakeAdminId = req.body.id
-    User.findOne({"_id": new mongodb.ObjectId(userToMakeAdminId)}, function(err, user) {
+    User.findOne({ "_id": new mongodb.ObjectId(userToMakeAdminId) }, function(err, user) {
       if (err) {
         console.log(err)
       } else if (user) {
