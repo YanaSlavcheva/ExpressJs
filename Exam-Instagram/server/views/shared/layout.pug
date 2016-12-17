@@ -23,4 +23,6 @@ html
             a(href="/users/login") Log In
       if (globalError)
         h3= globalError
+      if (globalMessage)
+        h3= globalMessage
       block main-content

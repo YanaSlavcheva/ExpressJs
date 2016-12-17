@@ -49,32 +49,25 @@ module.exports = {
     });
   },
   update: (req, res) => {
-    console.log('In update method')
-
-    // parse data
     let imageInfoForUpdate = req.body
     Image.findOne({"_id": new mongodb.ObjectId(imageInfoForUpdate.id)}, function(err, image) {
       if (err) {
-        console.log(err);
-        res.redirect('/')
+        console.log(err)
       } else if (image) {
-        console.log('Image to be updated: ', image);
-
-        // Updating the properties
         image.url = imageInfoForUpdate.url
         image.description = imageInfoForUpdate.description
 
-        // Lets save it
         image.save(function (err) {
           if (err) {
-            console.log(err);
-          } else {
-            console.log('Updated image: ', image);
+            console.log(err)
+          } else {            
+            console.log('Image with description "' + image.description + '" updated successfully')
             res.redirect('/')
           }
         });
       } else {
-        console.log('User not found!');
+        console.log('Image not found!')
+        res.redirect('/')
       }
     });
   }
