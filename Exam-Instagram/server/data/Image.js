@@ -8,7 +8,8 @@ let imageSchema = mongoose.Schema({
     url: {type: String, requiredValidationMessage},
     description: {type: String, requiredValidationMessage},
     username: {type: String},
-    createdOn: {type: Date, default: Date.now}
+    createdOn: {type: Date, default: Date.now},
+    likes: []
 })
 
 imageSchema.path('url').validate(function(value){
@@ -29,19 +30,22 @@ module.exports.seedImages = () => {
                 username: 'Admin',
                 views: 0,
                 url: 'https://s-media-cache-ak0.pinimg.com/736x/5b/11/c6/5b11c6b5eabb728c76b652c330ddaf8e.jpg',
-                description: 'Super #cute black #kitten'
+                description: 'Super #cute black #kitten',
+                likes: []
             },
             {
                 username: 'Admin',
                 views: 0,
                 url: 'http://cf.ltkcdn.net/cats/images/std/200777-425x322-kitten_crop.jpg',
-                description: 'Super #CUTE orange #kitten'
+                description: 'Super #CUTE orange #kitten',
+                likes: []
             },
             {
                 username: 'Admin',
                 views: 0,
                 url: 'http://kittentoob.com/wp-content/uploads/sites/4/2012/01/blue-eyed-white-persian-kitten.jpg',
-                description: 'Super beautiful #white #kitten'
+                description: 'Super beautiful #white #kitten',
+                likes: []
             })
         }
     })

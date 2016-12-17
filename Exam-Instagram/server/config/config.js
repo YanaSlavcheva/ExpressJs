@@ -6,7 +6,7 @@ module.exports = {
   development: {
     rootPath: rootPath,
     db: 'mongodb://localhost:27017/insta-db',
-    port: 1337
+    port: 1338
   },
   production: {
     rootPath: rootPath,

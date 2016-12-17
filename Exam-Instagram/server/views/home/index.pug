@@ -8,6 +8,16 @@ block main-content
         h3
           p Total views:
           p= val.views
+        if (currentUser)
+          h3
+            p Total likes:
+            p= val.likes.length
+
+            if (val.likes.indexOf(currentUser.username) == -1)
+              form(method="post" action="/images/like")
+                input(type="hidden" name="id" value= val._id)
+                input(type="submit" value="Like")
+
         img(src= val.url)
 
         if (currentUser)

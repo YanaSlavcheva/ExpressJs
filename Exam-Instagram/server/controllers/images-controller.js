@@ -17,6 +17,7 @@ module.exports = {
     } else {
       image.username = req.user._doc.username
       image.views = 0
+      image.likes = []
       Image
         .create(image)
         .then(image => {
@@ -66,6 +67,40 @@ module.exports = {
             res.redirect('/')
           }
         });
+      } else {
+        console.log('Image not found!')
+        res.redirect('/')
+      }
+    });
+  },
+  like: (req, res) => {
+    let imageToLikeId = req.body.id
+    Image.findOne({"_id": new mongodb.ObjectId(imageToLikeId)}, function(err, image) {
+      if (err) {
+        console.log(err)
+      } else if (image) {
+        let currentLikes = image.likes
+        let username = req.user._doc.username
+        let hasUserLiked = currentLikes.filter(function(imageLikes) {
+          return imageLikes.indexOf(username) > -1
+        })
+
+        if (hasUserLiked.length > 0) {
+          console.log('Cannot like image twice')
+          res.redirect('/')
+        } else {
+          image.likes.push(username)
+
+          image.save(function (err) {
+            if (err) {
+              console.log(err)
+            } else {            
+              console.log('Image liked by user "' + username)
+              res.redirect('/')
+            }
+          })
+        }
+      
       } else {
         console.log('Image not found!')
         res.redirect('/')
