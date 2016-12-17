@@ -12,6 +12,7 @@ module.exports = (app) => {
 
   app.get('/images/add', auth.isAuthenticated, controllers.images.add)
   app.post('/images/create', auth.isAuthenticated, controllers.images.create)
+  app.post('/images/delete', auth.isInRole('Admin'), controllers.images.delete)
 
   app.get('/tag/:tagName', controllers.tags.index)
   app.get('/profile/:username', controllers.users.profile)

@@ -1,4 +1,5 @@
 let Image = require('mongoose').model('Image')
+let mongodb = require('mongodb');
 
 module.exports = {
   add: (req, res) => {
@@ -21,5 +22,22 @@ module.exports = {
           res.redirect('/')
         })
     }
+  },
+  delete: (req, res) => {
+    let imageToDeleteId = req.body.id
+    Image
+      .remove(
+        {_id: new mongodb.ObjectID(imageToDeleteId) }, 
+        function (err, result){ 
+          if (err) {
+            console.log(err)
+          }
+
+          let deletedCount = result.result.n
+          console.log('Deleted ' + deletedCount + ' images')
+        })
+      .then(image => {
+        res.redirect('/')
+      })
   }
 }

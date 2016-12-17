@@ -5,4 +5,8 @@ block main-content
     each val in images
       li
         h2= val.description
-        img(src=val.url)
+        img(src= val.url)
+
+        form(method="post" action="/images/delete")
+          input(type="hidden" name="id" value= val._id)
+          input(type="submit" value="Delete")
