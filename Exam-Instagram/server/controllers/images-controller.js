@@ -45,10 +45,10 @@ module.exports = {
     // render form with loaded image data
     let imageId = req.params.imageId
     let image = Image.findOne({"_id": new mongodb.ObjectId(imageId)}, function(err, doc) {
-       callback(doc);
-    });
+       console.log(doc)
 
-    res.render('images/edit', {image: image})
+      res.render('images/edit', {image: doc})
+    });
   },
   update: (req, res) => {
     console.log('In update method')
