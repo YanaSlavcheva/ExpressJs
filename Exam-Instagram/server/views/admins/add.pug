@@ -5,7 +5,6 @@ block main-content
     each val in users
       li
         h2= val.username
-        h3= val._id
 
         if (currentUser)
           if (currentUser.roles.indexOf('Admin') > -1)

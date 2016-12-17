@@ -45,7 +45,7 @@ module.exports = {
     let inputUser = req.body
 
     User
-      .findOne({ username: inputUser.username })
+      .findOne({ username: inputUser.username.toLowerCase() })
       .then(user => {
         if (!user.authenticate(inputUser.password)) {
           res.render('users/login', { globalError: 'Invalid username or password' })
