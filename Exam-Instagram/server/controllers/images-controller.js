@@ -43,7 +43,7 @@ module.exports = {
   edit: (req, res) => {
     // get image by id
     // render form with loaded image data
-    let imageId = req.params.imageId
+    let imageId = req.body.id
     let image = Image.findOne({"_id": new mongodb.ObjectId(imageId)}, function(err, doc) {
        console.log(doc)
 
