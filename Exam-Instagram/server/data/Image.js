@@ -4,6 +4,7 @@ let requiredValidationMessage = '{PATH} is required'
 let tooLongMessage = 'too long'
 
 let imageSchema = mongoose.Schema({
+    views: Number,
     url: {type: String, requiredValidationMessage},
     description: {type: String, requiredValidationMessage},
     username: {type: String},
@@ -26,16 +27,19 @@ module.exports.seedImages = () => {
             Image.create(
             {
                 username: 'Admin',
+                views: 0,
                 url: 'https://s-media-cache-ak0.pinimg.com/736x/5b/11/c6/5b11c6b5eabb728c76b652c330ddaf8e.jpg',
                 description: 'Super #cute black #kitten'
             },
             {
                 username: 'Admin',
+                views: 0,
                 url: 'http://cf.ltkcdn.net/cats/images/std/200777-425x322-kitten_crop.jpg',
                 description: 'Super #CUTE orange #kitten'
             },
             {
                 username: 'Admin',
+                views: 0,
                 url: 'http://kittentoob.com/wp-content/uploads/sites/4/2012/01/blue-eyed-white-persian-kitten.jpg',
                 description: 'Super beautiful #white #kitten'
             })

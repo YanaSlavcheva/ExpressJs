@@ -92,7 +92,17 @@ module.exports = {
           }
       })
 
-      imagesToDisplay = usersImages.concat(imagesThatContainUserHandle).slice(0, 100)     
+      imagesToDisplay = usersImages.concat(imagesThatContainUserHandle).slice(0, 100)
+      imagesToDisplay.forEach(function(image) {
+        image.views += 1
+
+        image.save(function (err) {
+          if (err) {
+            console.log(err)
+          }
+        })
+      })
+
       res.render('users/profile', {images: imagesToDisplay, username: username})
     })
   }

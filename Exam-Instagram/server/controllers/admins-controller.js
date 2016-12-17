@@ -33,7 +33,7 @@ module.exports = {
             console.log('User "' + user.username + '" made admin successfully')
             res.redirect('/admins/all')
           }
-        });
+        })
       } else {
         console.log('User not found!')
         res.redirect('/')

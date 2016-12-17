@@ -5,6 +5,9 @@ block main-content
     each val in images
       li
         h2= val.description
+        h3
+          p Total views:
+          p= val.views
         img(src= val.url)
 
         if (currentUser)

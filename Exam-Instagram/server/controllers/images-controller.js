@@ -16,6 +16,7 @@ module.exports = {
       res.render('image', image)
     } else {
       image.username = req.user._doc.username
+      image.views = 0
       Image
         .create(image)
         .then(image => {
