@@ -84,7 +84,7 @@ module.exports = {
             .split(" ");
 
           let result = words.filter(function(tag){
-              return tag === '@' + username
+              return tag === '@' + username.toLowerCase()
           })
 
           if (result.length > 0) {
