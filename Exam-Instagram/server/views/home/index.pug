@@ -17,6 +17,10 @@ block main-content
               form(method="post" action="/images/like")
                 input(type="hidden" name="id" value= val._id)
                 input(type="submit" value="Like")
+            else
+              form(method="post" action="/images/dislike")
+                input(type="hidden" name="id" value= val._id)
+                input(type="submit" value="DisLike")
 
         img(src= val.url)
 

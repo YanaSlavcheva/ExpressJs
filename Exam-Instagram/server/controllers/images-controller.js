@@ -95,7 +95,45 @@ module.exports = {
             if (err) {
               console.log(err)
             } else {            
-              console.log('Image liked by user "' + username)
+              console.log('Image liked by user "' + username + '"')
+              res.redirect('/')
+            }
+          })
+        }
+      
+      } else {
+        console.log('Image not found!')
+        res.redirect('/')
+      }
+    });
+  },
+  dislike: (req, res) => {
+    let imageToDisLikeId = req.body.id
+    Image.findOne({"_id": new mongodb.ObjectId(imageToDisLikeId)}, function(err, image) {
+      if (err) {
+        console.log(err)
+      } else if (image) {
+        let currentLikes = image.likes
+        let username = req.user._doc.username
+        let hasUserLiked = currentLikes.filter(function(imageLikes) {
+          return imageLikes.indexOf(username) > -1
+        })
+
+        if (hasUserLiked.length == -1) {
+          console.log('Cannot dislike image you did not like')
+          res.redirect('/')
+        } else {
+          let likeIndex = image.likes.indexOf(username)
+
+          if (likeIndex > -1) {
+            image.likes.splice(likeIndex, 1)
+          }
+
+          image.save(function (err) {
+            if (err) {
+              console.log(err)
+            } else {            
+              console.log('Image disliked by user "' + username + '"')
               res.redirect('/')
             }
           })

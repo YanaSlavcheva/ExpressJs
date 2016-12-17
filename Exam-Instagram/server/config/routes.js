@@ -16,6 +16,7 @@ module.exports = (app) => {
   app.post('/images/edit', auth.isInRole('Admin'), controllers.images.edit)
   app.post('/images/update', auth.isInRole('Admin'), controllers.images.update)
   app.post('/images/like', auth.isAuthenticated, controllers.images.like)
+  app.post('/images/dislike', auth.isAuthenticated, controllers.images.dislike)
 
   app.get('/tag/:tagName', controllers.tags.index)
   app.get('/profile/:username', auth.isAuthenticated, controllers.users.profile)
