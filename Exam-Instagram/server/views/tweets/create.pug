@@ -1,9 +1,0 @@
-extends ../shared/layout
-block main-content
-  h1 Create tweet
-  form(method="post" action="/tweets/create")
-    label(for="message") Message
-    br
-    input(type="text" name="message" id="message" value=message)
-
-    input(type="submit" value="Tweet")

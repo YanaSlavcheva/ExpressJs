@@ -1,0 +1,13 @@
+extends ../shared/layout
+block main-content
+  h1 Create tweet
+  form(method="post" action="/images/create")
+    label(for="url") Url
+    br
+    input(type="text" name="url" id="url" value=url)
+    br
+    label(for="description") Description
+    br
+    input(type="text" name="description" id="description" value=description)
+
+    input(type="submit" value="Create")

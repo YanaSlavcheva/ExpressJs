@@ -1,6 +1,6 @@
 let encryption = require('../utilities/encryption')
 let User = require('mongoose').model('User')
-let Tweet = require('mongoose').model('Tweet')
+let Tweet = require('mongoose').model('Image')
 
 module.exports = {
   register: (req, res) => {
@@ -59,13 +59,13 @@ module.exports = {
   },
   profile: (req, res) => {
     let username = req.params.username
-    Tweet.find({}, function(err, tweets){
-      let result = tweets.filter(function(tweet) {
-        return tweet._doc.username === username
+    Image.find({}, function(err, images){
+      let result = images.filter(function(image) {
+        return image._doc.username === username
       })
-      tweetsToDisplay = result.slice(0, 100)
+      imagesToDisplay = result.slice(0, 100)
 
-      res.render('users/profile', {tweets: tweetsToDisplay, username: username})
+      res.render('users/profile', {images: imagesToDisplay, username: username})
     })
   }
 }

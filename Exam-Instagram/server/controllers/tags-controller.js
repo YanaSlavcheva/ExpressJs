@@ -1,13 +1,13 @@
-let Tweet = require('mongoose').model('Tweet')
+let Image = require('mongoose').model('Image')
 
 module.exports = {
   index: (req, res) => {
     let wantedTag = req.params.tagName
-    let tweetsThatContainTag = [];
-    Tweet.find({}, function(err, tweets){
-      tweets.forEach(function(tweet){
+    let imagesWhoseDescriptionContainTag = [];
+    Image.find({}, function(err, images){
+      images.forEach(function(image){
           // lovely, I know, I know...
-          let words = tweet.message
+          let words = image.message
             .toLowerCase()
             .replace("."," ")
             .replace(","," ")
@@ -20,13 +20,13 @@ module.exports = {
           })
 
           if (result.length > 0) {
-              tweetsThatContainTag.push(tweet)
+              imagesWhoseDescriptionContainTag.push(image)
           }
       })
 
-      tweetsToDisplay = tweetsThatContainTag.slice(0, 100)
+      imagesToDisplay = imagesWhoseDescriptionContainTag.slice(0, 100)
 
-      res.render('home/index', {tweets: tweetsToDisplay, tagName: wantedTag})
+      res.render('home/index', {images: imagesToDisplay, tagName: wantedTag})
     })
   }
 }

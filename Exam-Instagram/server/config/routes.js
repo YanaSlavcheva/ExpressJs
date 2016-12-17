@@ -3,7 +3,6 @@ const auth = require('../config/auth')
 
 module.exports = (app) => {
   app.get('/', controllers.home.index)
-  app.get('/about', controllers.home.about)
 
   app.get('/users/register', controllers.users.register)
   app.post('/users/create', controllers.users.create)
@@ -11,8 +10,8 @@ module.exports = (app) => {
   app.post('/users/authenticate', controllers.users.authenticate)
   app.post('/users/logout', controllers.users.logout)
 
-  app.get('/tweet', auth.isAuthenticated, controllers.tweets.tweet)
-  app.post('/tweets/create', auth.isAuthenticated, controllers.tweets.create)
+  app.get('/images/add', auth.isAuthenticated, controllers.images.add)
+  app.post('/images/create', auth.isAuthenticated, controllers.images.create)
 
   app.get('/tag/:tagName', controllers.tags.index)
   app.get('/profile/:username', controllers.users.profile)
