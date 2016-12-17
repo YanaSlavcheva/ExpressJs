@@ -60,11 +60,31 @@ module.exports = {
   profile: (req, res) => {
     let username = req.params.username
     Image.find({}, function(err, images){
-      let result = images.filter(function(image) {
+      let usersImages = images.filter(function(image) {
         return image._doc.username === username
       })
-      imagesToDisplay = result.slice(0, 100)
 
+      let imagesThatContainUserHandle = []
+      images.forEach(function(image){
+          // lovely, I know, I know...
+          let words = image.description
+            .toLowerCase()
+            .replace("."," ")
+            .replace(","," ")
+            .replace("!"," ")
+            .replace("?"," ")
+            .split(" ");
+
+          let result = words.filter(function(tag){
+              return tag === '@' + username
+          })
+
+          if (result.length > 0) {
+              imagesThatContainUserHandle.push(image)
+          }
+      })
+
+      imagesToDisplay = usersImages.concat(imagesThatContainUserHandle).slice(0, 100)     
       res.render('users/profile', {images: imagesToDisplay, username: username})
     })
   }
