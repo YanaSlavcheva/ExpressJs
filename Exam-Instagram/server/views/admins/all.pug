@@ -5,12 +5,3 @@ block main-content
     each val in admins
       li
         h2= val.username
-
-        //- if (currentUser)
-        //-   if (currentUser.roles.indexOf('Admin') > -1)
-        //-     form(method="post" action="/admins/delete")
-        //-       input(type="hidden" name="id" value= val._id)
-        //-       input(type="submit" value="Delete")
-        //-     form(method="post" action="/admins/edit")
-        //-       input(type="hidden" name="id" value= val._id)
-        //-       input(type="submit" value="Edit")

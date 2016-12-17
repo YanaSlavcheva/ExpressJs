@@ -26,6 +26,8 @@ html
           if (currentUser.roles.indexOf('Admin') > -1)
             li.delimiter
               a(href="/admins/all") Admins list
+            li.delimiter
+              a(href="/admins/add") Add admin
 
       if (globalError)
         h3= globalError

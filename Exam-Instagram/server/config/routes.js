@@ -20,6 +20,8 @@ module.exports = (app) => {
   app.get('/profile/:username', auth.isAuthenticated, controllers.users.profile)
 
   app.get('/admins/all', auth.isInRole('Admin'), controllers.admins.all)
+  app.get('/admins/add', auth.isInRole('Admin'), controllers.admins.add)
+  app.post('/admins/update', auth.isInRole('Admin'), controllers.admins.update)
 
   app.all('*', (req, res) => {
     res.status(404)
