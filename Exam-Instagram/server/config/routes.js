@@ -17,7 +17,7 @@ module.exports = (app) => {
   app.post('/images/update', auth.isInRole('Admin'), controllers.images.update)
 
   app.get('/tag/:tagName', controllers.tags.index)
-  app.get('/profile/:username', controllers.users.profile)
+  app.get('/profile/:username', auth.isAuthenticated, controllers.users.profile)
 
   app.all('*', (req, res) => {
     res.status(404)

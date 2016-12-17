@@ -7,3 +7,12 @@ block main-content
       li
         h3= val.description
         img(src=val.url)
+        
+        if (currentUser)
+          if (currentUser.roles.indexOf('Admin') > -1)
+            form(method="post" action="/images/delete")
+              input(type="hidden" name="id" value= val._id)
+              input(type="submit" value="Delete")
+            form(method="post" action="/images/edit")
+              input(type="hidden" name="id" value= val._id)
+              input(type="submit" value="Edit")
