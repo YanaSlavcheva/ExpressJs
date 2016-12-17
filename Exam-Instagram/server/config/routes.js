@@ -19,6 +19,8 @@ module.exports = (app) => {
   app.get('/tag/:tagName', controllers.tags.index)
   app.get('/profile/:username', auth.isAuthenticated, controllers.users.profile)
 
+  app.get('/admins/all', auth.isInRole('Admin'), controllers.admins.all)
+
   app.all('*', (req, res) => {
     res.status(404)
     res.send('Not Found')

@@ -21,8 +21,12 @@ html
             a(href="/users/register") Register
           li.delimiter
             a(href="/users/login") Log In
+
+        if (currentUser)
+          if (currentUser.roles.indexOf('Admin') > -1)
+            li.delimiter
+              a(href="/admins/all") Admins list
+
       if (globalError)
         h3= globalError
-      if (globalMessage)
-        h3= globalMessage
       block main-content
