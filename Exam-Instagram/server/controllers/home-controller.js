@@ -4,10 +4,10 @@ module.exports = {
   index: (req, res) => {
     Image.find({}, function(err, images){
       images.sort(function(a, b) {
-        return new Date(a.createdOn) - new Date(b.createdOn)
+        return new Date(b.createdOn) - new Date(a.createdOn)
       })
+      
       imagesToDisplay = images.slice(0, 100)
-
       res.render('home/index', {images: imagesToDisplay})
     })
   },

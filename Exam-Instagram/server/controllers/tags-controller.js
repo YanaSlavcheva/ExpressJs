@@ -3,11 +3,11 @@ let Image = require('mongoose').model('Image')
 module.exports = {
   index: (req, res) => {
     let wantedTag = req.params.tagName
-    let imagesWhoseDescriptionContainTag = [];
+    let imagesWhoseDescriptionContainsTag = [];
     Image.find({}, function(err, images){
       images.forEach(function(image){
           // lovely, I know, I know...
-          let words = image.message
+          let words = image.description
             .toLowerCase()
             .replace("."," ")
             .replace(","," ")
@@ -20,11 +20,11 @@ module.exports = {
           })
 
           if (result.length > 0) {
-              imagesWhoseDescriptionContainTag.push(image)
+              imagesWhoseDescriptionContainsTag.push(image)
           }
       })
 
-      imagesToDisplay = imagesWhoseDescriptionContainTag.slice(0, 100)
+      imagesToDisplay = imagesWhoseDescriptionContainsTag.slice(0, 100)
 
       res.render('home/index', {images: imagesToDisplay, tagName: wantedTag})
     })

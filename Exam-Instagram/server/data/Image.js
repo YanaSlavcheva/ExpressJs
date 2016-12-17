@@ -27,17 +27,17 @@ module.exports.seedImages = () => {
             {
                 username: 'Admin',
                 url: 'https://s-media-cache-ak0.pinimg.com/736x/5b/11/c6/5b11c6b5eabb728c76b652c330ddaf8e.jpg',
-                description: 'Super cute black kitten'
+                description: 'Super #cute black #kitten'
             },
             {
                 username: 'Admin',
                 url: 'http://cf.ltkcdn.net/cats/images/std/200777-425x322-kitten_crop.jpg',
-                description: 'Super cute orange kitten'
+                description: 'Super #CUTE orange #kitten'
             },
             {
                 username: 'Admin',
                 url: 'http://kittentoob.com/wp-content/uploads/sites/4/2012/01/blue-eyed-white-persian-kitten.jpg',
-                description: 'Super cute white kitten'
+                description: 'Super beautiful #white #kitten'
             })
         }
     })

@@ -1,6 +1,6 @@
 let encryption = require('../utilities/encryption')
 let User = require('mongoose').model('User')
-let Tweet = require('mongoose').model('Image')
+let Image = require('mongoose').model('Image')
 
 module.exports = {
   register: (req, res) => {
